@@ -10,7 +10,7 @@ if [ $permissao != "root" ]; then
 fi
 while [[ "$programas" != "7" ]]; do
 clear
-echo -e "::Digite o numero e tecle enter ou para cancelar feche no (X)::
+echo -e "--Digite o numero e tecle enter ou para cancelar feche no (X)--
 
 \033[0;34m1) \033[0m Instalar apache2
 \033[0;34m2) \033[0m Instalar mysql
@@ -27,8 +27,15 @@ read programas
 if [ "$programas" = "1" ];
 then
    sudo apt-get install apache2 -y #instala o apache
+
    chmod 777 -R /var/www/html # cria o atalho da www
-   ln -s /var/www/html www
+   echo " "
+   echo " "
+   echo -e "\033[01;32mDigite o diretório para criar o atalho \033[01;37m"
+   read diretorio
+   echo " "
+   echo " "
+   ln -s /var/www/html $diretorio"/www"
 
    echo -e "\033[01;37mPressione \033[01;32m[Enter]\033[01;37m para continuar"
    read -p ""
