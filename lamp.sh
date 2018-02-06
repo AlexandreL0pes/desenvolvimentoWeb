@@ -81,13 +81,6 @@ then
    echo -e "\033[01;37mPressione \033[01;32m[Enter]\033[01;37m para continuar"
    read -p ""
    echo " "
-elif [ "$programas" = "6" ];
-then
-    dir_atual=$(pwd)
-    dpkg -i $dir_atual/pacotes/gitkraken.deb
-    echo -e "\033[01;37mPressione \033[01;32m[Enter]\033[01;37m para continuar"
-    read -p ""
-    echo " "
 fi
 
 done
