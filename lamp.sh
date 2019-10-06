@@ -43,14 +43,18 @@ then
 
 elif [ "$programas" = "2" ];
 then
-   sudo apt-get install mysql-server -y
+   wget http://repo.mysql.com/mysql-apt-config_0.8.13-1_all.deb #baixa o pacote que irá perguntar qual versão do mysql quer instalar
+   sudo dpkg -i mysql-apt-config_0.8.13-1_all.deb 
+   sudo apt update && sudo apt install mysql-server
+   sudo mysql_secure_installation #para iniciar as configurações de segurança
+   sudo systemctl restart mysql.service #iniciando o serviço MySQL
    echo -e "\033[01;37mPressione \033[01;32m[Enter]\033[01;37m para continuar"
    read -p ""
    echo " "
 
 elif [ "$programas" = "3" ];
 then
-   sudo apt-get install php7.0 libapache2-mod-php7.0 php7.0-mcrypt php7.0-curl php7.0-gd php7.0-cli php7.0-mysql -y
+   sudo apt-get install php libapache2-mod-php -y #instala o php sem especificar a versão
    sudo systemctl restart apache2
 
    echo -e "\033[01;37mPressione \033[01;32m[Enter]\033[01;37m para continuar"
@@ -65,7 +69,7 @@ then
    echo " "
 elif [ "$programas" = "5" ];
 then
-   sudo apt-get install apache2 mysql-server php7.0 libapache2-mod-php7.0 php7.0-mcrypt php7.0-curl php7.0-gd php7.0-cli php7.0-mysql -y
+   sudo apt-get install apache2 mysql-server php libapache2-mod-php -y
 
    chmod 777 -R /var/www/html # cria o atalho da www
    echo " "
